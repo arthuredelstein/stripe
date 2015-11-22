@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+ <head>
+  <meta charset="utf-8" />
+  <style type="text/css">
+   body { margin: auto; width: 600px;}
+  </style>
+ </head>
+ <body>
+
+  <p>
+   This is a test.
+   Please enter 4242 4242 4242 4242 for your credit card,
+   an expiration date in the future, and
+   any CVC, email address, and ZIP code you want.
+  </p>
+  <p>
+   <b>Ahem. Blah blah, please donate to Tor.</b>
+  </p>
+  
+  <div style="margin: 10px;">
+   <form action="" method="POST">
+    <script
+      src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+      data-key="pk_test_FaN3MBbuh3gJdCPX1DFBaS0z"
+      data-amount="2000"
+      data-name="Donate to The Tor Project"
+      data-description="Charitable donation of $20"
+      data-image="/tor.png"
+      data-locale="auto"
+      data-panel-label="Donate {{amount}}"
+      data-zip-code="true"
+      data-label="Donate with Credit Card"
+      data-allow-remember-me="false"
+      data-billing-address="false">
+    </script>
+   </form>
+  </div>
+
+  </body>
+</html>
