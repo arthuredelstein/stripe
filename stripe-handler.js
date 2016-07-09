@@ -65,6 +65,7 @@ app.post('/stripe/charge', function (req, res) {
           source: body.stripeToken,
           description: "One-time Donation",
           statement_descriptor: "Donation to Tor",
+          metadata: shipping_params(body),
           shipping: {
             name: body.shipping_name,
             address: {
