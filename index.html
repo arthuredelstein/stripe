@@ -14,15 +14,44 @@
    an expiration date in the future, and
    any CVC, email address, and ZIP code you want.
   </p>
+  <div id="donationDiv">
   <p>
-   <b>Ahem. Blah blah, please donate to Tor.</b>
+   <b>Ahem. Please donate to Tor.</b>
   </p>
-  
+
+  <script src="https://checkout.stripe.com/checkout.js"></script>
+  <script src="stripe-tor.js"></script>
+
+  <input id="amountInput" type="text" />
+  <button id="donateButton">Donate</button>
+  <span id="donationError"></span>
+  </div>
+  <script>
+
+    document.getElementById('donateButton').addEventListener('click', function(event) {
+      event.preventDefault();
+      let amountInput = document.getElementById('amountInput');
+      showStripeTorDonationCheckout(amountInput.value, function (result) {
+        console.log("result: " + result)
+        if (result.success) {
+          document.getElementById("donationDiv").innerHTML = "Thank you for your donation!";
+        } else {
+          // We use innerText for security reasons.
+          document.getElementById("donationError").innerText = result.message;
+        }
+      });
+    });
+
+
+  </script>
+
+  <!--
+
   <div style="margin: 10px;">
    <form action="thanks" method="POST">
     <script
       src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-      data-key="pk_test_FaN3MBbuh3gJdCPX1DFBaS0z"
+      data-key="pk_test_K2bGg87pthxNndczsmaNvaWq"
       data-amount="2000"
       data-name="Donate to The Tor Project"
       data-description="Charitable donation of $20"
@@ -32,11 +61,13 @@
       data-zip-code="true"
       data-label="Donate with Credit Card"
       data-allow-remember-me="false"
-      data-billing-address="false">
+      data-billing-address="true">
     </script>
-    <input type=text name="amount" />
+    <input type=hidden name="amount" value="1500"/>
    </form>
   </div>
+
+-->
 
   </body>
 </html>
